@@ -1,3 +1,18 @@
+/*
+0-600px: Phone
+600 - 900px:    Tablet portrait;
+900 - 1200px:   Tablet landscape;
+1200 - 1800px:  Our basic styles;
+1800px + :      Big Desktop;
+
+//Breakpoint argument choices
+- phone
+- tab-port
+- tab-land
+- big-desktop
+
+1em = 16px
+*/
 .Content {
   padding: 1.25rem 0 1.25rem 0;
   position: relative;
@@ -6,6 +21,12 @@
   background-image: linear-gradient(to right bottom, rgba(26, 71, 237, 0.5), rgba(11, 39, 141, 0.4)), url(../../assets/images/background.png);
   background-size: cover;
   background-position: top;
+}
+@media (max-width: 37.5em) {
+  .Content {
+    background-position: top;
+    background-size: auto;
+  }
 }
 
 /*# sourceMappingURL=Layout.module.css.map */

@@ -25,7 +25,8 @@ const TodoController = () => {
   };
 
   const changeTodoHandler = (event, id) => {
-    if (event.type === 'click' || event.key === "Enter") {
+    console.log(event.type);
+    if (event.type === 'change' || event.type === 'click' || event.key === "Enter") {
       const updatedState = {todos: [...state.todos]};
       const changedTodo = updatedState.todos.find(todo => todo.id === id);
       changedTodo.checked = !changedTodo.checked;
