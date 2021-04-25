@@ -1,0 +1,113 @@
+@import '../../../variables';
+
+.TodoItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba($color-black,.1);
+  padding: 0.625rem;
+  margin-bottom: 0.625rem;
+
+  &:hover {
+    background-color: rgba($color-black,.2);
+
+    button {
+      background-color: $color-peach;
+      color: $color-white;
+      opacity: 1;
+
+      &:hover {
+        background-color: darken($color-peach, 3%);
+        opacity: 1;
+      }
+    }
+  }
+
+  button {
+    &:active,
+    &:focus {
+      background-color: $color-peach;
+      color: $color-white;
+      opacity: 1;
+    }
+  }
+}
+
+.CheckedItem {
+  background-color: rgba($color-black,.05);
+  color: rgba($color-white,.5);
+
+  label {
+    text-decoration: line-through;
+  }
+
+  &:hover {
+    background-color: rgba($color-black,.1);
+    color: rgba($color-white,.4);
+  }
+}
+
+.Container {
+  padding-left: 2rem;
+  font-size: 1.25rem;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  box-sizing: border-box;
+
+  .Checkmark:after {
+    left: 5px;
+    top: 2px;
+    width: 6px;
+    height: 0.625rem;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+  input {
+    height: 0;
+    width: 0;
+    opacity: 0;
+    position: absolute;
+    cursor: pointer;
+  }
+}
+
+.Checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 1.25rem;
+  width: 1.25rem;
+  background-color: $color-white;
+  border: 2px solid transparent;
+  box-sizing: border-box;
+
+  &:after {
+    content: '';
+    position: absolute;
+    display: none;
+  }
+}
+
+.Container:hover input ~ .Checkmark {
+  background-color: $color-light-grey;
+}
+
+.Container input:checked ~ .Checkmark {
+  background-color: $color-light-blue;
+}
+
+.Container input:focus ~ .Checkmark {
+  border: 2px solid rgba($color-black,.4);
+}
+
+.Container input:checked ~ .Checkmark:after {
+  display: block;
+}

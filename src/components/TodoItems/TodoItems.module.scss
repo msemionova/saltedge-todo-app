@@ -1,0 +1,42 @@
+@import '../../variables';
+@import '../../mixins';
+
+.TodoList {
+  max-width: $content-width;
+  margin: 0 auto;
+  text-align: center;
+  font-weight: $font-weight-light;
+  color: $color-white;
+
+  h1 {
+    color: $color-white;
+    font-size: 3rem;
+    margin-bottom: 1.25rem;
+  }
+
+  form {
+    margin-bottom: 2.5rem;
+  }
+}
+
+.Container {
+  position: relative;
+  text-align: left;
+  padding: 2.5rem;
+  background-image: linear-gradient(
+          to right bottom,
+          rgba($color-primary-accent, .95),
+          rgba($color-primary, .95));
+
+  @include respond(phone) {
+    padding: 1rem;
+    margin: 1rem;
+  }
+}
+
+.Empty {
+  text-align: center;
+  padding: 2.5rem;
+  margin-top: 1.25rem;
+  background-color: rgba($color-black, 0.1);
+}

@@ -1,0 +1,62 @@
+/*
+0-600px: Phone
+600 - 900px:    Tablet portrait;
+900 - 1200px:   Tablet landscape;
+1200 - 1800px:  Our basic styles;
+1800px + :      Big Desktop;
+
+//Breakpoint argument choices
+- phone
+- tab-port
+- tab-land
+- big-desktop
+
+1em = 16px
+*/
+.Button {
+  padding: 0.625rem;
+  font-size: 1rem;
+  font-weight: normal;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none;
+  color: #FFFFFF;
+  box-sizing: border-box;
+  background-color: transparent;
+  cursor: pointer;
+}
+.Button:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.Button:focus, .Button:active {
+  outline: none;
+  background-color: #0B278D;
+}
+
+.Add {
+  background-color: #0B278D;
+  height: 3.125rem;
+  width: 20%;
+  border-bottom: 3px solid transparent;
+}
+.Add:hover {
+  background-color: #092075;
+}
+.Add:disabled {
+  opacity: 0.5;
+  background-color: #092075;
+  cursor: not-allowed;
+}
+
+.Delete {
+  background-color: transparent;
+  color: transparent;
+}
+@media (max-width: 37.5em) {
+  .Delete {
+    background-color: #FF7676;
+    color: #FFFFFF;
+  }
+}
+
+/*# sourceMappingURL=Button.module.css.map */
