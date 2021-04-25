@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/saltedge-todo-app/static/css/main.03667408.chunk.css",
+    "main.js": "/saltedge-todo-app/static/js/main.c8e74719.chunk.js",
+    "main.js.map": "/saltedge-todo-app/static/js/main.c8e74719.chunk.js.map",
+    "runtime-main.js": "/saltedge-todo-app/static/js/runtime-main.3f4f9802.js",
+    "runtime-main.js.map": "/saltedge-todo-app/static/js/runtime-main.3f4f9802.js.map",
+    "static/js/2.c57606d3.chunk.js": "/saltedge-todo-app/static/js/2.c57606d3.chunk.js",
+    "static/js/2.c57606d3.chunk.js.map": "/saltedge-todo-app/static/js/2.c57606d3.chunk.js.map",
+    "static/js/3.84def55f.chunk.js": "/saltedge-todo-app/static/js/3.84def55f.chunk.js",
+    "static/js/3.84def55f.chunk.js.map": "/saltedge-todo-app/static/js/3.84def55f.chunk.js.map",
+    "index.html": "/saltedge-todo-app/index.html",
+    "static/css/main.03667408.chunk.css.map": "/saltedge-todo-app/static/css/main.03667408.chunk.css.map",
+    "static/js/2.c57606d3.chunk.js.LICENSE.txt": "/saltedge-todo-app/static/js/2.c57606d3.chunk.js.LICENSE.txt",
+    "static/media/index.scss": "/saltedge-todo-app/static/media/Gilroy-Regular.b91b0127.ttf",
+    "static/media/Layout.module.scss": "/saltedge-todo-app/static/media/background.c5b1f7ef.png",
+    "static/media/logo.6ae23580.svg": "/saltedge-todo-app/static/media/logo.6ae23580.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.3f4f9802.js",
+    "static/js/2.c57606d3.chunk.js",
+    "static/css/main.03667408.chunk.css",
+    "static/js/main.c8e74719.chunk.js"
+  ]
+}
