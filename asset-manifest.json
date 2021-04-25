@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/saltedge-todo-app/static/css/main.08b7af08.chunk.css",
-    "main.js": "/saltedge-todo-app/static/js/main.a0a84a15.chunk.js",
-    "main.js.map": "/saltedge-todo-app/static/js/main.a0a84a15.chunk.js.map",
+    "main.js": "/saltedge-todo-app/static/js/main.1a99bfae.chunk.js",
+    "main.js.map": "/saltedge-todo-app/static/js/main.1a99bfae.chunk.js.map",
     "runtime-main.js": "/saltedge-todo-app/static/js/runtime-main.3f4f9802.js",
     "runtime-main.js.map": "/saltedge-todo-app/static/js/runtime-main.3f4f9802.js.map",
     "static/js/2.c57606d3.chunk.js": "/saltedge-todo-app/static/js/2.c57606d3.chunk.js",
@@ -20,6 +20,6 @@
     "static/js/runtime-main.3f4f9802.js",
     "static/js/2.c57606d3.chunk.js",
     "static/css/main.08b7af08.chunk.css",
-    "static/js/main.a0a84a15.chunk.js"
+    "static/js/main.1a99bfae.chunk.js"
   ]
 }
