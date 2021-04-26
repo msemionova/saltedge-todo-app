@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/saltedge-todo-app/static/css/main.ec399aac.chunk.css",
-    "main.js": "/saltedge-todo-app/static/js/main.6aa07391.chunk.js",
-    "main.js.map": "/saltedge-todo-app/static/js/main.6aa07391.chunk.js.map",
-    "runtime-main.js": "/saltedge-todo-app/static/js/runtime-main.3f4f9802.js",
-    "runtime-main.js.map": "/saltedge-todo-app/static/js/runtime-main.3f4f9802.js.map",
-    "static/js/2.b4f36e24.chunk.js": "/saltedge-todo-app/static/js/2.b4f36e24.chunk.js",
-    "static/js/2.b4f36e24.chunk.js.map": "/saltedge-todo-app/static/js/2.b4f36e24.chunk.js.map",
-    "static/js/3.84def55f.chunk.js": "/saltedge-todo-app/static/js/3.84def55f.chunk.js",
-    "static/js/3.84def55f.chunk.js.map": "/saltedge-todo-app/static/js/3.84def55f.chunk.js.map",
-    "index.html": "/saltedge-todo-app/index.html",
-    "static/css/main.ec399aac.chunk.css.map": "/saltedge-todo-app/static/css/main.ec399aac.chunk.css.map",
-    "static/js/2.b4f36e24.chunk.js.LICENSE.txt": "/saltedge-todo-app/static/js/2.b4f36e24.chunk.js.LICENSE.txt",
-    "static/media/index.scss": "/saltedge-todo-app/static/media/Gilroy-Regular.b91b0127.ttf",
-    "static/media/Layout.module.scss": "/saltedge-todo-app/static/media/background.c5b1f7ef.png",
-    "static/media/logo.6ae23580.svg": "/saltedge-todo-app/static/media/logo.6ae23580.svg"
+    "main.css": "./static/css/main.6626b20f.chunk.css",
+    "main.js": "./static/js/main.d66bd302.chunk.js",
+    "main.js.map": "./static/js/main.d66bd302.chunk.js.map",
+    "runtime-main.js": "./static/js/runtime-main.bfb0c6a8.js",
+    "runtime-main.js.map": "./static/js/runtime-main.bfb0c6a8.js.map",
+    "static/js/2.b4f36e24.chunk.js": "./static/js/2.b4f36e24.chunk.js",
+    "static/js/2.b4f36e24.chunk.js.map": "./static/js/2.b4f36e24.chunk.js.map",
+    "static/js/3.84def55f.chunk.js": "./static/js/3.84def55f.chunk.js",
+    "static/js/3.84def55f.chunk.js.map": "./static/js/3.84def55f.chunk.js.map",
+    "index.html": "./index.html",
+    "static/css/main.6626b20f.chunk.css.map": "./static/css/main.6626b20f.chunk.css.map",
+    "static/js/2.b4f36e24.chunk.js.LICENSE.txt": "./static/js/2.b4f36e24.chunk.js.LICENSE.txt",
+    "static/media/index.scss": "./static/media/Gilroy-Regular.b91b0127.ttf",
+    "static/media/Layout.module.scss": "./static/media/background.c5b1f7ef.png",
+    "static/media/logo.6ae23580.svg": "./static/media/logo.6ae23580.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.3f4f9802.js",
+    "static/js/runtime-main.bfb0c6a8.js",
     "static/js/2.b4f36e24.chunk.js",
-    "static/css/main.ec399aac.chunk.css",
-    "static/js/main.6aa07391.chunk.js"
+    "static/css/main.6626b20f.chunk.css",
+    "static/js/main.d66bd302.chunk.js"
   ]
 }
