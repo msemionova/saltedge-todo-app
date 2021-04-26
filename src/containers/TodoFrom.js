@@ -78,7 +78,13 @@ const TodoForm = props => {
       <Button
         disabled={!inputState.validation.valid}
         clicked={(event) => todoAddedHandler(event, inputState.value)}
-        btnType='Add'>ADD</Button>
+        btnType='Add'
+      >
+        <svg>
+          <use xlinkHref="saltedge-todo-app/symbol-defs.svg#icon-plus-square" />
+        </svg>
+        ADD
+      </Button>
     </form>
   );
 }

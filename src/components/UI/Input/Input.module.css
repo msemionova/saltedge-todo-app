@@ -1,3 +1,18 @@
+/*
+0-600px: Phone
+600 - 900px:    Tablet portrait;
+900 - 1200px:   Tablet landscape;
+1200 - 1800px:  Our basic styles;
+1800px + :      Big Desktop;
+
+//Breakpoint argument choices
+- phone
+- tab-port
+- tab-land
+- big-desktop
+
+1em = 16px
+*/
 .Input {
   height: 3.125rem;
   width: 80%;
@@ -7,6 +22,9 @@
   box-sizing: border-box;
   border: none;
   border-bottom: 3px solid transparent;
+  transition: all 300ms;
+  position: relative;
+  z-index: 2;
 }
 .Input:focus {
   outline: none;
@@ -15,6 +33,11 @@
 .Input::placeholder {
   color: #81A2BA;
   font-weight: normal;
+}
+@media (max-width: 37.5em) {
+  .Input {
+    width: 70%;
+  }
 }
 
 .Invalid {
@@ -30,7 +53,16 @@
   font-size: 1rem;
   font-weight: 500;
   position: relative;
-  top: 3.125rem;
+  top: 3.5rem;
+  transform: translateY(-2rem);
+  opacity: 0;
+  transition: all 500ms;
+  z-index: 1;
+}
+.ValidationError.Visible {
+  transform: translateY(0);
+  opacity: 1;
+  z-index: 1;
 }
 
 /*# sourceMappingURL=Input.module.css.map */

@@ -2,12 +2,16 @@ import React from 'react';
 import classes from './Input.module.scss';
 
 const input = props => {
-  let validationError = <p className={classes.ValidationError}></p>;
+  let errorMessage = localStorage.getItem('lastErrorMessage') || props.errorMessage;
   const inputClasses = [classes.Input];
+  const errorMessageClasses = [classes.ValidationError];
+  let validationError = <p className={errorMessageClasses.join(' ')}>{errorMessage}</p>
 
   if (props.invalid && props.touched) {
+    localStorage.setItem('lastErrorMessage', props.errorMessage);
     inputClasses.push(classes.Invalid);
-    validationError = <p className={classes.ValidationError}>{props.errorMessage}</p>
+    errorMessageClasses.push(classes.Visible);
+    validationError = <p className={errorMessageClasses.join(' ')}>{errorMessage}</p>
   }
 
   return <>

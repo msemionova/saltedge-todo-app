@@ -1,26 +1,51 @@
+/*
+0-600px: Phone
+600 - 900px:    Tablet portrait;
+900 - 1200px:   Tablet landscape;
+1200 - 1800px:  Our basic styles;
+1800px + :      Big Desktop;
+
+//Breakpoint argument choices
+- phone
+- tab-port
+- tab-land
+- big-desktop
+
+1em = 16px
+*/
+@keyframes fadeInOpacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 .TodoItem {
   display: flex;
+  opacity: 0;
   justify-content: space-between;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.1);
   padding: 0.625rem;
   margin-bottom: 0.625rem;
+  transition: all 300ms;
+}
+.TodoItem button {
+  opacity: 0;
+}
+.TodoItem button:active, .TodoItem button:focus {
+  opacity: 1;
+}
+@media (max-width: 37.5em) {
+  .TodoItem button {
+    opacity: 1;
+  }
 }
 .TodoItem:hover {
   background-color: rgba(0, 0, 0, 0.2);
 }
 .TodoItem:hover button {
-  background-color: #FF7676;
-  color: #FFFFFF;
-  opacity: 1;
-}
-.TodoItem:hover button:hover {
-  background-color: #ff6767;
-  opacity: 1;
-}
-.TodoItem button:active, .TodoItem button:focus {
-  background-color: #FF7676;
-  color: #FFFFFF;
   opacity: 1;
 }
 
@@ -38,6 +63,7 @@
 
 .Container {
   padding-left: 2rem;
+  margin-right: 1rem;
   font-size: 1.25rem;
   position: relative;
   cursor: pointer;
@@ -46,6 +72,7 @@
   -ms-user-select: none;
   user-select: none;
   box-sizing: border-box;
+  word-break: break-word;
 }
 .Container .Checkmark:after {
   left: 5px;
@@ -96,6 +123,14 @@
 
 .Container input:checked ~ .Checkmark:after {
   display: block;
+}
+
+.FadeIn {
+  opacity: 1;
+  animation-name: fadeInOpacity;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in;
+  animation-duration: 500ms;
 }
 
 /*# sourceMappingURL=TodoItem.module.css.map */
