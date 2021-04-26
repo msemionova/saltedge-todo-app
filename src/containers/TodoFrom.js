@@ -81,7 +81,7 @@ const TodoForm = props => {
         btnType='Add'
       >
         <svg>
-          <use xlinkHref="saltedge-todo-app/symbol-defs.svg#icon-plus-square" />
+          <use xlinkHref='symbol-defs.svg#icon-plus-square' />
         </svg>
         ADD
       </Button>

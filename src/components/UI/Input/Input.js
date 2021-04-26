@@ -2,7 +2,7 @@ import React from 'react';
 import classes from './Input.module.scss';
 
 const input = props => {
-  let errorMessage = localStorage.getItem('lastErrorMessage') || props.errorMessage;
+  let errorMessage = props.errorMessage || localStorage.getItem('lastErrorMessage');
   const inputClasses = [classes.Input];
   const errorMessageClasses = [classes.ValidationError];
   let validationError = <p className={errorMessageClasses.join(' ')}>{errorMessage}</p>

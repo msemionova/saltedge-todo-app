@@ -14,7 +14,7 @@ const todoItem = props => {
       </label>
       <Button btnType='Delete' clicked={props.deleted}>
         <svg>
-          <use xlinkHref="saltedge-todo-app/symbol-defs.svg#icon-trash" />
+          <use xlinkHref='symbol-defs.svg#icon-trash' />
         </svg>
       </Button>
     </div>
