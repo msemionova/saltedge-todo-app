@@ -1,24 +1,26 @@
-import React from "react";
+import React, {useContext} from "react";
 import classes from './TodoItem.module.scss';
 import Button from '../../UI/Button/Button';
+import { Context } from '../../../context';
 
-const todoItem = props => {
+const TodoItem = props => {
+  const { toggleTodoHandler, deleteTodoHandler } = useContext(Context);
   const checkedClass = props.todo.checked ? 'CheckedItem' : '';
   const combinedClasses = [classes.TodoItem, classes.FadeIn, classes[checkedClass]];
 
   return <>
-    <div className={combinedClasses.join(' ')} onClick={props.changed}>
+    <div className={combinedClasses.join(' ')} onClick={(event) => toggleTodoHandler(event, props.id)}>
       <label className={classes.Container}>{props.todo.title}
         <input
           type='checkbox'
-          onKeyPress={props.changed}
-          onChange={props.changed}
+          onKeyPress={toggleTodoHandler}
+          onChange={toggleTodoHandler}
           checked={props.todo.checked}
           data-testid={'checkbox-' + props.index}
         />
         <span className={classes.Checkmark}/>
       </label>
-      <Button btnType='Delete' clicked={props.deleted} testId={'delete-btn-' + props.index}>
+      <Button btnType='Delete' clicked={(event) => deleteTodoHandler(event, props.id)} testId={'delete-btn-' + props.index}>
         <svg>
           <use xlinkHref='symbol-defs.svg#icon-trash' />
         </svg>
@@ -27,4 +29,4 @@ const todoItem = props => {
   </>;
 };
 
-export default todoItem;
+export default TodoItem;
