@@ -1,21 +1,42 @@
 import React, { useState } from 'react';
-import Input from '../components/UI/Input/Input';
-import Button from '../components/UI/Button/Button';
+import Input from '../../components/UI/Input/Input';
+import Button from '../../components/UI/Button/Button';
 
-const ERROR_MESSAGES = {
+export const INPUT_CONFIG = {
+  DEFAULT_VALUE: '',
+  PLACEHOLDER: 'Add a TODO...',
+  TYPE: 'text',
+  MIN_LENGTH: 5,
+  MAX_LENGTH: 100
+};
+
+export const ERROR_MESSAGES = {
   REQUIRED: 'This field is required',
-  MIN_LENGTH: 'Min length: 5 characters',
-  MAX_LENGTH: 'Max length: 100 characters'
-}
+  MIN_LENGTH: `Min length: ${INPUT_CONFIG.MIN_LENGTH} characters`,
+  MAX_LENGTH: `Max length: ${INPUT_CONFIG.MAX_LENGTH} characters`
+};
+
+const TEST_IDS = {
+  INPUT: 'todo-input',
+  BUTTON: 'add-todo-btn',
+  FORM: 'todo-form'
+};
+
+const ICON_PLUS = 'symbol-defs.svg#icon-plus-square';
+const BTN_ADD = 'Add';
 
 const TodoForm = props => {
   const initialState = {
-    value: '',
+    value: INPUT_CONFIG.DEFAULT_VALUE,
+    config: {
+      placeholder: INPUT_CONFIG.PLACEHOLDER,
+      type: INPUT_CONFIG.TYPE,
+    },
     validation: {
+      minLength: INPUT_CONFIG.MIN_LENGTH,
+      maxLength: INPUT_CONFIG.MAX_LENGTH,
       valid: false,
       touched: false,
-      minLength: 5,
-      maxLength: 100,
       required: true,
       errorMessage: ''
     }
@@ -53,6 +74,7 @@ const TodoForm = props => {
   const inputChangedHandler = event => {
     const updatedState = {
       value: event.target.value,
+      config: {...inputState.config},
       validation: {...inputState.validation}
     }
     updatedState.validation.touched = true;
@@ -67,21 +89,26 @@ const TodoForm = props => {
   }
 
   return (
-    <form onSubmit={(event) => todoAddedHandler(event, inputState.value)}>
+    <form onSubmit={(event) => todoAddedHandler(event, inputState.value)}
+          data-testid={TEST_IDS.FORM}>
       <Input
         value={inputState.value}
+        placeholder={inputState.config.placeholder}
+        type={inputState.config.type}
         changed={(event) => inputChangedHandler(event)}
         invalid={!inputState.validation.valid}
         touched={inputState.validation.touched}
         errorMessage={inputState.validation.errorMessage}
+        testId={TEST_IDS.INPUT}
       />
       <Button
         disabled={!inputState.validation.valid}
         clicked={(event) => todoAddedHandler(event, inputState.value)}
-        btnType='Add'
+        btnType={BTN_ADD}
+        testId={TEST_IDS.BUTTON}
       >
         <svg>
-          <use xlinkHref='symbol-defs.svg#icon-plus-square' />
+          <use xlinkHref={ICON_PLUS} />
         </svg>
         ADD
       </Button>
