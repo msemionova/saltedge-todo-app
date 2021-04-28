@@ -1,7 +1,6 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import Input from '../../components/UI/Input/Input';
 import Button from '../../components/UI/Button/Button';
-import { Context } from '../../context';
 
 export const INPUT_CONFIG = {
   DEFAULT_VALUE: '',
@@ -17,18 +16,6 @@ export const ERROR_MESSAGES = {
   MAX_LENGTH: `Max length: ${INPUT_CONFIG.MAX_LENGTH} characters`
 };
 
-const TEST_IDS = {
-  INPUT: 'todo-input',
-  BUTTON: 'add-todo-btn',
-  FORM: 'todo-form'
-};
-
-const BUTTON_TYPES = {
-  ADD: 'Add'
-};
-
-const ICON_PLUS = 'symbol-defs.svg#icon-plus-square';
-
 const TodoForm = props => {
   const initialValidation = {
     minLength: INPUT_CONFIG.MIN_LENGTH,
@@ -39,7 +26,6 @@ const TodoForm = props => {
   const [value, setValue] = useState(INPUT_CONFIG.DEFAULT_VALUE);
   const [validation, setValidation] = useState(initialValidation);
   const [errorMessage, setErrorMessage] = useState('');
-  const { addTodoHandler } = useContext(Context);
 
   const generateErrorMessage = (value, rules) => {
     if (value.trim() === '') {
@@ -63,25 +49,24 @@ const TodoForm = props => {
 
   const inputChangedHandler = event => {
     const updatedValue = event.target.value;
-    const isValid = checkValidity(updatedValue, validation);
     setErrorMessage(generateErrorMessage(updatedValue, validation));
     setValue(updatedValue);
     setValidation({
       ...validation,
-      valid: isValid,
+      valid: checkValidity(updatedValue, validation),
       touched: true
     });
   };
 
   const todoAddedHandler = (event, value) => {
-    addTodoHandler(event, value);
+    props.added(event, value);
     setValue(INPUT_CONFIG.DEFAULT_VALUE);
     setValidation(initialValidation);
     setErrorMessage('');
   }
 
   return (
-    <form onSubmit={(event) => todoAddedHandler(event, value)} data-testid={TEST_IDS.FORM}>
+    <form onSubmit={(event) => todoAddedHandler(event, value)} data-testid='todo-form'>
       <Input
         value={value}
         placeholder={INPUT_CONFIG.PLACEHOLDER}
@@ -90,18 +75,18 @@ const TodoForm = props => {
         invalid={!validation.valid}
         touched={validation.touched}
         errorMessage={errorMessage}
-        testId={TEST_IDS.INPUT}
+        testId='todo-input'
       />
       <Button
         disabled={!validation.valid}
         clicked={(event) => todoAddedHandler(event, value)}
-        btnType={BUTTON_TYPES.ADD}
-        testId={TEST_IDS.BUTTON}
+        btnType='Add'
+        testId='add-todo-btn'
       >
         <svg>
-          <use xlinkHref={ICON_PLUS} />
+          <use xlinkHref='symbol-defs.svg#icon-plus-square' />
         </svg>
-        {BUTTON_TYPES.ADD.toUpperCase()}
+        ADD
       </Button>
     </form>
   );

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import TodoItems from '../../components/TodoItems/TodoItems';
-import { Context } from '../../context';
 
 const TodoController = () => {
   const [todos, setTodos] = useState([]);
@@ -40,11 +39,12 @@ const TodoController = () => {
     setTodos(todos.filter(todo => todo.id !== id));
   };
 
-  return (
-    <Context.Provider value={{ addTodoHandler, toggleTodoHandler, deleteTodoHandler }}>
-      <TodoItems todos={todos} />;
-    </Context.Provider>
-  );
+  return <TodoItems
+            todos={todos}
+            added={addTodoHandler}
+            changed={toggleTodoHandler}
+            deleted={deleteTodoHandler}
+          />;
 };
 
 export default TodoController;

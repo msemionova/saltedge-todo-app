@@ -11,10 +11,11 @@ const TodoItems = props => {
   if (props.todos.length) {
     todos = props.todos.map((todo, index) => (
       <TodoItem
-        id={todo.id}
         key={todo.id}
         todo={todo}
         index={index}
+        changed={(event) => props.changed(event, todo.id)}
+        deleted={(event) => props.deleted(event, todo.id)}
       />));
     todos = <div data-testid='todo-list'>{todos}</div>
   }
@@ -23,7 +24,7 @@ const TodoItems = props => {
     <div className={classes.TodoList}>
       <h1 data-testid='heading'>TODOs:</h1>
       <div className={classes.Container} data-testid='container'>
-        <TodoForm />
+        <TodoForm added={props.added}/>
         {todos}
       </div>
     </div>
