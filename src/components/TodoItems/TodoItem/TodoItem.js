@@ -2,12 +2,15 @@ import React from "react";
 import classes from './TodoItem.module.scss';
 import Button from '../../UI/Button/Button';
 
-const todoItem = props => {
+const TodoItem = props => {
   const checkedClass = props.todo.checked ? 'CheckedItem' : '';
   const combinedClasses = [classes.TodoItem, classes.FadeIn, classes[checkedClass]];
 
   return <>
-    <div className={combinedClasses.join(' ')} onClick={props.changed}>
+    <div
+      className={combinedClasses.join(' ')}
+      onClick={(event) => props.changed(event, props.todo.id)}
+    >
       <label className={classes.Container}>{props.todo.title}
         <input
           type='checkbox'
@@ -18,7 +21,10 @@ const todoItem = props => {
         />
         <span className={classes.Checkmark}/>
       </label>
-      <Button btnType='Delete' clicked={props.deleted} testId={'delete-btn-' + props.index}>
+      <Button
+        btnType='Delete'
+        clicked={(event) => props.deleted(event, props.todo.id)}
+        testId={'delete-btn-' + props.index}>
         <svg>
           <use xlinkHref='symbol-defs.svg#icon-trash' />
         </svg>
@@ -27,4 +33,4 @@ const todoItem = props => {
   </>;
 };
 
-export default todoItem;
+export default TodoItem;

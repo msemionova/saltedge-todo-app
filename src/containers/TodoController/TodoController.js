@@ -1,53 +1,50 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import TodoItems from '../../components/TodoItems/TodoItems';
 
 const TodoController = () => {
-  const initialState = {
-    todos: []
-  };
-  const currentState = JSON.parse(localStorage.getItem('state'));
-  const [state, setState] = useState(currentState || initialState);
+  const [todos, setTodos] = useState([]);
 
-  const updateLocalStorage = (state) => {
-    localStorage.setItem('state', JSON.stringify(state));
-  };
+  useEffect(() => {
+    const latestTodos = JSON.parse(localStorage.getItem('todos')) || [];
+    setTodos(latestTodos);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos]);
 
   const addTodoHandler = (event, value) => {
     event.preventDefault();
-    const updatedState = {todos: [...state.todos]};
-    updatedState.todos.push({
+    setTodos([...todos, {
       id: Date.now(),
       title: value,
       checked: false
-    })
-    setState(updatedState);
-    updateLocalStorage(updatedState);
+    }]);
   };
 
-  const changeTodoHandler = (event, id) => {
+  const toggleTodoHandler = (event, id) => {
+    event.preventDefault();
     if (event.type === 'change' || event.type === 'click' || event.key === "Enter") {
-      const updatedState = {todos: [...state.todos]};
-      const changedTodo = updatedState.todos.find(todo => todo.id === id);
-      changedTodo.checked = !changedTodo.checked;
-      setState(updatedState);
-      updateLocalStorage(updatedState);
+      setTodos(todos.map(todo => {
+        if (todo.id === id) {
+          todo.checked = !todo.checked;
+        }
+        return todo;
+      }));
     }
   };
 
   const deleteTodoHandler = (event, id) => {
     event.stopPropagation();
-    const updatedState = {todos: [...state.todos]};
-    updatedState.todos = updatedState.todos.filter(todo => todo.id !== id);
-    setState(updatedState);
-    updateLocalStorage(updatedState);
+    setTodos(todos.filter(todo => todo.id !== id));
   };
 
   return <TodoItems
-    todos={state.todos}
-    deleted={deleteTodoHandler}
-    changed={changeTodoHandler}
-    added={addTodoHandler}
-  />;
+            todos={todos}
+            added={addTodoHandler}
+            changed={toggleTodoHandler}
+            deleted={deleteTodoHandler}
+          />;
 };
 
 export default TodoController;

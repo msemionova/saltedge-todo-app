@@ -16,33 +16,16 @@ export const ERROR_MESSAGES = {
   MAX_LENGTH: `Max length: ${INPUT_CONFIG.MAX_LENGTH} characters`
 };
 
-const TEST_IDS = {
-  INPUT: 'todo-input',
-  BUTTON: 'add-todo-btn',
-  FORM: 'todo-form'
-};
-
-const ICON_PLUS = 'symbol-defs.svg#icon-plus-square';
-const BTN_ADD = 'Add';
-
 const TodoForm = props => {
-  const initialState = {
-    value: INPUT_CONFIG.DEFAULT_VALUE,
-    config: {
-      placeholder: INPUT_CONFIG.PLACEHOLDER,
-      type: INPUT_CONFIG.TYPE,
-    },
-    validation: {
-      minLength: INPUT_CONFIG.MIN_LENGTH,
-      maxLength: INPUT_CONFIG.MAX_LENGTH,
-      valid: false,
-      touched: false,
-      required: true,
-      errorMessage: ''
-    }
+  const initialValidation = {
+    minLength: INPUT_CONFIG.MIN_LENGTH,
+    maxLength: INPUT_CONFIG.MAX_LENGTH,
+    valid: false,
+    touched: false
   };
-
-  const [inputState, setInputState] = useState(initialState);
+  const [value, setValue] = useState(INPUT_CONFIG.DEFAULT_VALUE);
+  const [validation, setValidation] = useState(initialValidation);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const generateErrorMessage = (value, rules) => {
     if (value.trim() === '') {
@@ -58,57 +41,50 @@ const TodoForm = props => {
 
   const checkValidity = (value, rules) => {
     let isValid = true;
-
-    if (rules.required) {
-      isValid = value.trim() !== '' && isValid;
-    }
-    if (rules.minLength) {
-      isValid = value.length >= rules.minLength && isValid;
-    }
-    if (rules.maxLength) {
-      isValid = value.length <= rules.maxLength && isValid;
-    }
+    isValid = value.trim() !== '' && isValid;
+    isValid = value.length >= rules.minLength && isValid;
+    isValid = value.length <= rules.maxLength && isValid;
     return isValid;
-  }
+  };
 
   const inputChangedHandler = event => {
-    const updatedState = {
-      value: event.target.value,
-      config: {...inputState.config},
-      validation: {...inputState.validation}
-    }
-    updatedState.validation.touched = true;
-    updatedState.validation.valid = checkValidity(updatedState.value, updatedState.validation);
-    updatedState.validation.errorMessage = generateErrorMessage(updatedState.value, updatedState.validation);
-    setInputState(updatedState);
-  }
+    const updatedValue = event.target.value;
+    setErrorMessage(generateErrorMessage(updatedValue, validation));
+    setValue(updatedValue);
+    setValidation({
+      ...validation,
+      valid: checkValidity(updatedValue, validation),
+      touched: true
+    });
+  };
 
   const todoAddedHandler = (event, value) => {
     props.added(event, value);
-    setInputState(initialState);
+    setValue(INPUT_CONFIG.DEFAULT_VALUE);
+    setValidation(initialValidation);
+    setErrorMessage('');
   }
 
   return (
-    <form onSubmit={(event) => todoAddedHandler(event, inputState.value)}
-          data-testid={TEST_IDS.FORM}>
+    <form onSubmit={(event) => todoAddedHandler(event, value)} data-testid='todo-form'>
       <Input
-        value={inputState.value}
-        placeholder={inputState.config.placeholder}
-        type={inputState.config.type}
+        value={value}
+        placeholder={INPUT_CONFIG.PLACEHOLDER}
+        type={INPUT_CONFIG.TYPE}
         changed={(event) => inputChangedHandler(event)}
-        invalid={!inputState.validation.valid}
-        touched={inputState.validation.touched}
-        errorMessage={inputState.validation.errorMessage}
-        testId={TEST_IDS.INPUT}
+        invalid={!validation.valid}
+        touched={validation.touched}
+        errorMessage={errorMessage}
+        testId='todo-input'
       />
       <Button
-        disabled={!inputState.validation.valid}
-        clicked={(event) => todoAddedHandler(event, inputState.value)}
-        btnType={BTN_ADD}
-        testId={TEST_IDS.BUTTON}
+        disabled={!validation.valid}
+        clicked={(event) => todoAddedHandler(event, value)}
+        btnType='Add'
+        testId='add-todo-btn'
       >
         <svg>
-          <use xlinkHref={ICON_PLUS} />
+          <use xlinkHref='symbol-defs.svg#icon-plus-square' />
         </svg>
         ADD
       </Button>
